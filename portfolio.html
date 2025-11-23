@@ -1,107 +1,22 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head><title>Menunggu</title></head>
-  <p style="display: none;">https://github.com/serverstb/server</p>
-    <style>
-        /* CSS untuk styling umum dan penataan letak */
-        body {
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
+<hr>
+    <h2>📊 Pertumbuhan Portofolio (Simulasi)</h2>
+    <div class="line-chart-container">
+        <span class="y-axis-label" style="top: 0px;">$20,000</span>
+        <span class="y-axis-label" style="top: 75px;">$15,000</span>
+        <span class="y-axis-label" style="top: 150px;">$10,000</span>
+        <span class="y-axis-label" style="top: 225px;">$5,000</span>
+        <span class="y-axis-label" style="top: 250px;">$0</span>
 
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-        }
 
-        /* CSS Inti untuk Grafik Pie */
-        .pie-chart-container {
-            width: 300px;
-            height: 300px;
-            /* Membuat wadah menjadi kotak, untuk memastikan lingkaran sempurna */
-            border-radius: 50%; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background: 
-                /* conic-gradient adalah kunci untuk membuat segmen pie murni dengan CSS */
-                conic-gradient(
-                    /* 1. Keuangan (37.5%) */
-                    #007bff 0deg 135deg, /* 360 * 0.375 = 135 derajat */
-                    /* 2. Energi (37.5%) */
-                    #28a745 135deg 270deg,
-                    /* 3. Teknologi (12.5%) */
-                    #ffc107 270deg 315deg, /* 360 * 0.125 = 45 derajat (270+45=315) */
-                    /* 4. Properti (12.5%) */
-                    #dc3545 315deg 360deg 
-                );
-            margin-bottom: 40px;
-        }
-
-        /* Styling untuk Legenda (Keterangan) */
-        .legend {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            color: #555;
-        }
-
-        .legend-color {
-            width: 15px;
-            height: 15px;
-            border-radius: 3px;
-            margin-right: 8px;
-        }
-
-        /* Pewarnaan Legenda Sesuai dengan Segmen Pie */
-        .legend-color.keuangan { background-color: #007bff; }
-        .legend-color.energi { background-color: #28a745; }
-        .legend-color.teknologi { background-color: #ffc107; }
-        .legend-color.properti { background-color: #dc3545; }
-    </style>
-</head>
-<body>
-
-    <h3>Kamu tidak sungguh sungguh mencobanya</h3>
-
-    <div class="pie-chart-container"></div>
-    
-
-    <ul class="legend">
-        <li class="legend-item">
-            <span class="legend-color keuangan"></span>
-            Keuangan (37.5%)
-        </li>
-        <li class="legend-item">
-            <span class="legend-color energi"></span>
-            Energi (37.5%)
-        </li>
-        <li class="legend-item">
-            <span class="legend-color teknologi"></span>
-            Teknologi (12.5%)
-        </li>
-        <li class="legend-item">
-            <span class="legend-color properti"></span>
-            Properti (12.5%)
-        </li>
-    </ul>
-    <hr>  
+        <div class="growth-line">
+            <span class="x-axis-label" style="left: 10px;">Jan</span>
+            <span class="x-axis-label" style="left: 50%; transform: translateX(-50%);">Jun</span>
+            <span class="x-axis-label" style="right: 10px;">Des</span>
+            <div class="actual-growth"></div>
+        </div>
+    </div>
+    <p style="margin-top: 30px; font-style: italic;">Grafik ini menunjukkan tren naik secara umum. Data aktual (nilai dari $0 hingga $20,000) dan label waktu (Jan-Des) bersifat simulasi. </p>
+    <hr>
     <p><strong>Sumber Data Anda:</strong></p>
     <ol>
         <li>BJTM [Keuangan]</li>
@@ -113,6 +28,3 @@
         <li>BUKA [Teknologi]</li>
         <li>LPKR [Properti]</li>
     </ol>
-
-</body>
-</html>
