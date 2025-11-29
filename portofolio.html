@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saham</title>
+    <style>
+        /* CSS Umum */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* CSS PENTING: Membuat Grafik Pie */
+        .pie-chart-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%; /* Membuat lingkaran */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Sintaks conic-gradient yang bersih */
+            background: conic-gradient(
+                #007bff 0deg 135deg,   /* Keuangan 37.5% */
+                #28a745 135deg 270deg, /* Energi 37.5% */
+                #ffc107 270deg 315deg, /* Teknologi 12.5% */
+                #dc3545 315deg 360deg  /* Properti 12.5% */
+            );
+            margin-bottom: 40px;
+        }
+
+        /* Legenda */
+        .legend {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 600px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #555;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        /* Warna Legenda */
+        .legend-color.keuangan { background-color: #007bff; }
+        .legend-color.energi { background-color: #28a745; }
+        .legend-color.teknologi { background-color: #ffc107; }
+        .legend-color.properti { background-color: #dc3545; }
+
+        /* List Saham */
+        .data-source {
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <p style="display: none;">https://github.com/serverstb/server</p>
+
+    <h3>Komposisi Portofolio Anda</h3>
+
+    <div class="pie-chart-container"></div>
+
+    <ul class="legend">
+        <li class="legend-item">
+            <span class="legend-color keuangan"></span> Keuangan (37.5%)
+        </li>
+        <li class="legend-item">
+            <span class="legend-color energi"></span> Energi (37.5%)
+        </li>
+        <li class="legend-item">
+            <span class="legend-color teknologi"></span> Teknologi (12.5%)
+        </li>
+        <li class="legend-item">
+            <span class="legend-color properti"></span> Properti (12.5%)
+        </li>
+    </ul>
+
+    <div class="data-source">
+        <p><strong>Aset Saham:</strong></p>
+        <ol>
+            <li>BJTM [Keuangan]</li>
+            <li>BMRI [Keuangan]</li>
+            <li>CFIN [Keuangan]</li>
+            <li>POWR [Energi]</li>
+            <li>ADRO [Energi]</li>
+            <li>PTBA [Energi]</li>
+            <li>BUKA [Teknologi]</li>
+            <li>LPKR [Properti]</li>
+        </ol>
+    </div>
+
+</body>
+</html>
