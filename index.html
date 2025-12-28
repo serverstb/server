@@ -21,13 +21,40 @@
   --purple:#a78bfa;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Poppins,system-ui,sans-serif;
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+
+/* ================= LOADING ================= */
+.loader{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  transition:opacity .6s ease,visibility .6s ease;
 }
 
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-circle{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:6px solid #e5e7eb;
+  border-top-color:var(--blue);
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* ================= BODY ================= */
 body{
   background:linear-gradient(180deg,var(--bg1),var(--bg2));
   min-height:100vh;
@@ -35,41 +62,35 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= PARALLAX BACKGROUND ================= */
+/* ================= PARALLAX ================= */
 .parallax{
   position:fixed;
   inset:0;
   z-index:-3;
-  perspective:1px;
-  overflow:hidden;
+  pointer-events:none;
 }
 
 .parallax-layer{
   position:absolute;
   inset:-20%;
-  background-repeat:no-repeat;
-  background-size:cover;
-  transform-origin:center;
+  transition:transform .1s linear;
 }
 
 .layer-back{
   background:
     radial-gradient(circle at 20% 30%, #60a5fa55, transparent 40%),
     radial-gradient(circle at 80% 70%, #f472b655, transparent 45%);
-  transform:translateZ(-1px) scale(2);
 }
 
 .layer-mid{
   background:
     radial-gradient(circle at 60% 20%, #facc1555, transparent 40%),
     radial-gradient(circle at 30% 80%, #4ade8055, transparent 45%);
-  transform:translateZ(-0.6px) scale(1.6);
 }
 
 .layer-front{
   background:
     radial-gradient(circle at 50% 50%, #a78bfa44, transparent 50%);
-  transform:translateZ(-0.2px) scale(1.2);
 }
 
 /* ================= FLOATING SHAPES ================= */
@@ -77,7 +98,6 @@ body{
   position:fixed;
   inset:0;
   z-index:-2;
-  overflow:hidden;
   pointer-events:none;
 }
 
@@ -108,20 +128,9 @@ body{
   z-index:1;
 }
 
-header{
-  text-align:center;
-  margin-bottom:56px;
-}
-
-header h1{
-  font-size:clamp(2.2rem,6vw,3.2rem);
-  font-weight:700;
-}
-
-header p{
-  margin-top:10px;
-  color:var(--muted);
-}
+header{text-align:center;margin-bottom:56px}
+header h1{font-size:clamp(2.2rem,6vw,3.2rem)}
+header p{color:var(--muted);margin-top:10px}
 
 /* GRID */
 .grid{
@@ -137,40 +146,25 @@ header p{
   padding:22px;
   box-shadow:0 12px 30px rgba(0,0,0,.08);
   transition:.35s;
-  position:relative;
-}
-
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  background:linear-gradient(135deg,transparent,rgba(255,255,255,.6));
-  opacity:0;
-  transition:.3s;
 }
 
 .card:hover{
   transform:translateY(-10px) scale(1.03);
   box-shadow:0 25px 50px rgba(0,0,0,.15);
 }
-.card:hover::after{opacity:1}
 
 .card a{
-  display:block;
   font-weight:700;
-  text-decoration:none;
   color:#2563eb;
-  margin-bottom:10px;
-  word-break:break-all;
+  text-decoration:none;
 }
 
 .badge{
   display:inline-block;
+  margin-top:8px;
   padding:6px 14px;
   border-radius:999px;
   font-size:.75rem;
-  font-weight:600;
 }
 
 .edu{background:rgba(96,165,250,.25)}
@@ -186,27 +180,6 @@ header p{
   border-radius:28px;
   padding:40px 24px;
   text-align:center;
-  box-shadow:0 18px 40px rgba(0,0,0,.08);
-}
-
-.support p{
-  max-width:650px;
-  margin:0 auto 28px;
-  color:var(--muted);
-}
-
-.support-list{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:14px;
-}
-
-.support-item{
-  padding:12px 18px;
-  border-radius:16px;
-  font-weight:600;
-  background:linear-gradient(135deg,#f0f9ff,#fef3f8);
 }
 
 /* FOOTER */
@@ -216,15 +189,15 @@ footer{
   font-size:.8rem;
   color:var(--muted);
 }
-
-/* MOBILE */
-@media(max-width:480px){
-  header h1{font-size:2.1rem}
-}
 </style>
 </head>
 
 <body>
+
+<!-- LOADING -->
+<div class="loader" id="loader">
+  <div class="loader-circle"></div>
+</div>
 
 <!-- PARALLAX -->
 <div class="parallax">
@@ -233,7 +206,7 @@ footer{
   <div class="parallax-layer layer-front"></div>
 </div>
 
-<!-- FLOATING SHAPE -->
+<!-- FLOATING -->
 <div class="bg">
   <div class="shape one"></div>
   <div class="shape two"></div>
@@ -248,33 +221,36 @@ footer{
   </header>
 
   <section class="grid">
-    <div class="card"><a href="https://cat.serverstb.com">cat.serverstb.com</a><span class="badge edu">Pendidikan</span></div>
-    <div class="card"><a href="https://cbt.serverstb.com">cbt.serverstb.com</a><span class="badge edu">Pendidikan</span></div>
-    <div class="card"><a href="https://sekolah.serverstb.com">sekolah.serverstb.com</a><span class="badge edu">Pendidikan</span></div>
-    <div class="card"><a href="https://app.serverstb.com">app.serverstb.com</a><span class="badge fin">Keuangan</span></div>
-    <div class="card"><a href="https://finplan.serverstb.com">finplan.serverstb.com</a><span class="badge fin">Keuangan</span></div>
-    <div class="card"><a href="https://keuangan.serverstb.com">keuangan.serverstb.com</a><span class="badge fin">Keuangan</span></div>
-    <div class="card"><a href="https://waris.serverstb.com">waris.serverstb.com</a><span class="badge law">Hukum</span></div>
-    <div class="card"><a href="https://society.serverstb.com">society.serverstb.com</a><span class="badge soc">Sosial</span></div>
-    <div class="card"><a href="https://survey.serverstb.com">survey.serverstb.com</a><span class="badge soc">Sosial</span></div>
-    <div class="card"><a href="https://api.serverstb.com">api.serverstb.com</a><span class="badge info">Informasi</span></div>
+    <div class="card"><a href="#">cat.serverstb.com</a><span class="badge edu">Pendidikan</span></div>
+    <div class="card"><a href="#">cbt.serverstb.com</a><span class="badge edu">Pendidikan</span></div>
+    <div class="card"><a href="#">sekolah.serverstb.com</a><span class="badge edu">Pendidikan</span></div>
+    <div class="card"><a href="#">app.serverstb.com</a><span class="badge fin">Keuangan</span></div>
   </section>
 
-  <section class="support">
-    <h2>Didukung Gratis 💙</h2>
-    <p>Semua aplikasi ServerSTB didukung gratis oleh platform modern & aman.</p>
-    <div class="support-list">
-      <div class="support-item">Firebase Studio</div>
-      <div class="support-item">Cloudflare</div>
-      <div class="support-item">Vercel</div>
-      <div class="support-item">Supabase</div>
-    </div>
-  </section>
-
-  <footer>
-    © ServerSTB · Kids Friendly UI · Mobile First
-  </footer>
+  <footer>© ServerSTB · Mobile First</footer>
 </div>
+
+<script>
+/* ===== LOADER ===== */
+window.addEventListener("load",()=>{
+  document.getElementById("loader").classList.add("hide");
+});
+
+/* ===== PARALLAX MOUSE ===== */
+if(!('ontouchstart' in window)){
+  document.addEventListener("mousemove",(e)=>{
+    const x = (e.clientX / window.innerWidth - .5);
+    const y = (e.clientY / window.innerHeight - .5);
+
+    document.querySelector(".layer-back")
+      .style.transform = `translate(${x*20}px,${y*20}px)`;
+    document.querySelector(".layer-mid")
+      .style.transform = `translate(${x*35}px,${y*35}px)`;
+    document.querySelector(".layer-front")
+      .style.transform = `translate(${x*50}px,${y*50}px)`;
+  });
+}
+</script>
 
 </body>
 </html>
