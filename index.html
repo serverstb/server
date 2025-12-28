@@ -1,17 +1,259 @@
-<html>
-  <head><title>Menunggu</title></head>
-  <p style="display: none;">https://github.com/serverstb/server</p>
-Kamu tidak sungguh sungguh mencobanya ,- <hr>
-<ol>
-  <li>https://cat.serverstb.com [Pendidikan]</li>
-  <li>https://cbt.serverstb.com [Pendidikan]</li>
-  <li>https://sekolah.serverstb.com [Pendidikan]</li>
-  <li>https://app.serverstb.com [Keuangan]</li>
-  <li>https://finplan.serverstb.com [Keuangan] </li>
-  <li>https://keuangan.serverstb.com [Keuangan]</li>
-  <li>https://waris.serverstb.com [Hukum]</li>
-  <li>https://society.serverstb.com [Sosial]</li>
-  <li>https://survey.serverstb.com [Sosial]</li>
-  <li>https://api.serverstb.com [Informasi]</li>
-</ol>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Menunggu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --accent: #38bdf8;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 40px 0;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #020617, #020617);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .card a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 8px;
+      word-break: break-all;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.15);
+      color: var(--accent);
+    }
+
+    .support {
+      margin-top: 60px;
+      background: linear-gradient(180deg, #020617, #020617);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .support h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .support p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .support-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .logo {
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* hidden info */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Menunggu</h1>
+      <p>Kamu tidak sungguh-sungguh mencobanya.</p>
+    </header>
+
+    <p class="hidden">https://github.com/serverstb/server</p>
+
+    <hr />
+
+    <section class="apps">
+      <div class="card">
+        <a href="https://cat.serverstb.com">cat.serverstb.com</a>
+        <span class="tag">Pendidikan</span>
+      </div>
+
+      <div class="card">
+        <a href="https://cbt.serverstb.com">cbt.serverstb.com</a>
+        <span class="tag">Pendidikan</span>
+      </div>
+
+      <div class="card">
+        <a href="https://sekolah.serverstb.com">sekolah.serverstb.com</a>
+        <span class="tag">Pendidikan</span>
+      </div>
+
+      <div class="card">
+        <a href="https://app.serverstb.com">app.serverstb.com</a>
+        <span class="tag">Keuangan</span>
+      </div>
+
+      <div class="card">
+        <a href="https://finplan.serverstb.com">finplan.serverstb.com</a>
+        <span class="tag">Keuangan</span>
+      </div>
+
+      <div class="card">
+        <a href="https://keuangan.serverstb.com">keuangan.serverstb.com</a>
+        <span class="tag">Keuangan</span>
+      </div>
+
+      <div class="card">
+        <a href="https://waris.serverstb.com">waris.serverstb.com</a>
+        <span class="tag">Hukum</span>
+      </div>
+
+      <div class="card">
+        <a href="https://society.serverstb.com">society.serverstb.com</a>
+        <span class="tag">Sosial</span>
+      </div>
+
+      <div class="card">
+        <a href="https://survey.serverstb.com">survey.serverstb.com</a>
+        <span class="tag">Sosial</span>
+      </div>
+
+      <div class="card">
+        <a href="https://api.serverstb.com">api.serverstb.com</a>
+        <span class="tag">Informasi</span>
+      </div>
+    </section>
+
+    <section class="support">
+      <h2>Didukung Secara Gratis</h2>
+      <p>
+        Seluruh aplikasi dalam ekosistem <strong>serverstb</strong> didukung dan
+        disediakan secara gratis berkat layanan teknologi modern yang andal,
+        aman, dan scalable.
+      </p>
+
+      <div class="support-logos">
+        <div class="logo">Firebase Studio</div>
+        <div class="logo">Cloudflare</div>
+        <div class="logo">Vercel</div>
+        <div class="logo">Supabase</div>
+      </div>
+    </section>
+
+    <footer>
+      © ServerSTB · Dibangun dengan desain modern & performa tinggi
+    </footer>
+  </div>
+</body>
 </html>
